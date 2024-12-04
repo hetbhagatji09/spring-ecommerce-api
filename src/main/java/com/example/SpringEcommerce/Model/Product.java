@@ -1,9 +1,6 @@
 package com.example.SpringEcommerce.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,6 +23,15 @@ public class Product {
     private String category;
     private int quantity;
     private Date date;
+    //Stores the MIME type of the image (e.g., "image/png" or "image/jpeg").
+    private String imageType;
+    //Stores the name of the uploaded image file (e.g., "product1.png").
+    private String imageName;
+    @Lob
+    private byte[] imageData;
+    public Product(int id){
+        this.id=id;
+    }
 
 
 
