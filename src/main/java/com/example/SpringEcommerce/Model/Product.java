@@ -101,12 +101,34 @@ public class Product {
     public void setStockQuantity(int stockQuantity) {
         this.stockQuantity = stockQuantity;
     }
-    //Stores the MIME type of the image (e.g., "image/png" or "image/jpeg").
-//    private String imageType;
-    //Stores the name of the uploaded image file (e.g., "product1.png").
-//    private String imageName;
-//    @Lob
-//    private byte[] imageData;
+   // Stores the MIME type of the image (e.g., "image/png" or "image/jpeg").
+    private String imageType;
+   // Stores the name of the uploaded image file (e.g., "product1.png").
+    private String imageName;
+    @Lob
+    private byte[] imageData;
 
+    public String getImageType() {
+        return imageType;
+    }
 
+    public void setImageType(String imageType) {
+        this.imageType = imageType;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public byte[] getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(byte[] imageData) {
+        this.imageData = imageData;
+    }
 }
