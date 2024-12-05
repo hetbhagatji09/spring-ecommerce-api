@@ -5,6 +5,8 @@ import com.example.SpringEcommerce.Repository.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -25,6 +27,15 @@ public class ProductsService {
     }
 
     public Product addProduct(Product product, MultipartFile image) throws IOException {
+        product.setImageName(image.getOriginalFilename());
+        product.setImageType(image.getContentType());
+        product.setImageData(image.getBytes());
+
+        return productRepo.save(product);
+    }
+
+
+    public Product updateProduct(Product product, MultipartFile image) throws IOException {
         product.setImageName(image.getOriginalFilename());
         product.setImageType(image.getContentType());
         product.setImageData(image.getBytes());

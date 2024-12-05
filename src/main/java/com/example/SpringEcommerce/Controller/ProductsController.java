@@ -53,5 +53,26 @@ public class ProductsController {
         }
 
     }
+    //to fetch image
+    @GetMapping("/product/{id}/image")
+    public ResponseEntity<byte[]> getImageByProductId(@PathVariable int id){
+        Product product=productsService.getProduct(id);
+        try {
+            return new ResponseEntity<>(product.getImageData(), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    @PutMapping("/product/{id}")
+    public ResponseEntity<String> updateProduct(@PathVariable int id,@RequestPart Product product, @RequestPart MultipartFile imageFile){
+        Product updatedProduct=null;
+        try{
+            updatedProduct=productsService.updateProduct(product,imageFile);
+            return new ResponseEntity<>("updtaed",HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+        }
+
+    }
 
 }
