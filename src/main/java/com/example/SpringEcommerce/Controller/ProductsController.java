@@ -86,5 +86,12 @@ public class ProductsController {
 
         }
     }
+    @GetMapping("products/search")
+    public ResponseEntity<List<Product>>getproducts(@RequestParam String keyword){
+        List<Product>products=productsService.searchProducts(keyword);
+        System.out.println("searching for "+keyword);
+        if(products!=null) return new ResponseEntity<>(products,HttpStatus.OK);
+        else return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
+    }
 
 }
